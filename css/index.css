@@ -1,0 +1,297 @@
+	*{
+		margin:0;
+		padding:0;
+		box-sizing:border-box;
+	}
+	body{
+		font-size:13px;
+		background-image:url("../img/colored_body_top2.png");
+	}
+	a{
+		text-decoration:none;
+	}
+	li{
+		list-style:none;
+	}
+
+
+	.center{
+		width:1190px;
+		margin:0 auto;
+	}
+	.center_son{
+		width:940px;
+	}
+
+	/*顶部logo行*/
+	.top{
+		background-color:#171A21;
+		padding-left:290px;
+		height:104px;
+	}
+	.top a{
+		display:inline-block;
+		color:#b8b6b4;
+	}
+	.top a:hover{
+		color:#fff;
+	}
+	.top .logo{
+		padding:0;
+		margin-top:30px;
+		margin-right:25px;
+		float:left;
+	}
+	.topson:after{
+		content:"";
+		display:block;
+		clear:both;
+	}
+	/*商家，社区。。。*/
+	.head_fa{
+		position:relative;
+		float:left;
+	}
+	.heada{
+		margin-top:37px;
+		padding:7px;
+		position:relative;
+	}
+	.head_son>li{
+		float:left;
+	}
+	.merchant,.community{
+		position:absolute;
+		padding:5px 15px 10px 15px;
+		background-color:#171a21;
+		box-shadow:3px 3px 5px -3px #000;
+		z-index:100;
+	}
+	.merchant a,.community a{
+		padding:6px 10px 6px 0px;
+		font-size:12px;
+	}
+	.merchant{
+		top:67px;
+		left:0;
+		display:none;
+	}
+	.community{
+		top:67px;
+		left:50px;
+		display:none;
+	}
+	
+
+	/*登陆，语言*/
+	.login{
+		float:right;
+		font-size:12px;
+		position:relative;
+		margin-top:6px;
+	}
+	.login div{
+		position:absolute;
+		width:24px;
+		height:21px;
+		top:0px;
+		background-image:url("../img/btn_header_green.png");
+		background-repeat: no-repeat;
+		background-size:cover;
+	}
+	.top .install{
+		display:inline-block;
+		background-color:#698407;
+		color:#e5e4dc;
+		line-height:21px;
+		padding-right:7px;
+		padding-left:27px;
+	}
+	.login span{
+		color:#b8b6b4;
+	}
+	.log1{
+		padding:0px 7px;
+	}
+	.log2{
+		padding:2px 17px 2px 7px;
+		background-image:url("../img/btn_arrow_down_padded.png");
+		background-repeat: no-repeat;
+		background-position: 33px 5px
+	}
+
+
+	/*********设置搜索栏*********/
+
+	/*标题a标签字体，颜色*/
+	.grabble_son>li>a{
+		display:block;
+		line-height:35px;
+		color:#c6d4df;
+		font-size:14px;
+		text-indent:1em;
+		margin:0px 7px 0px 0px;
+		/*text-align:center;*/
+	}
+
+	.grabble_fa{
+		padding-right:30px;
+		margin-top:31px;
+		position:relative;
+	}
+	.grabble_fa:after{
+		content:"";
+		display:block;
+		clear:both;
+	}
+	.grabble{
+		float:right;
+		height:35px;
+		background-color:#377097;
+	}
+	.grabble_son>li{
+		float:left;
+		box-shadow:1px 1px 0px rgba();
+		border-right:1px solid rgba(16,21,25,0.3);
+		position:relative;
+		cursor:pointer;
+	}
+	
+	.grabble_son>li:hover{
+		background-color:#D0DCE5;
+		color:#555;
+	}
+	.grabble_son>li:hover>a{
+		color:#555;
+	}
+	.merchant_tab{
+		width:96px;
+	}
+	.tab{
+		width:70px;
+	}
+	.grabble_son .new_tab{
+		width:50px;
+		text-align:center;
+		text-indent:0px;
+	}
+	.grabble_input{
+		width:230px;
+		height:27px;
+		margin-right:10px;
+		margin-top:4px;
+		float:right;
+		border:1px solid rgba(0,0,0,0.3);
+		box-shadow:1px 1px 0px rgba(255,255,255,0.2);
+		background-color:#316282;
+		background-image:url("../img/search_icon_btn_over.png");
+		background-repeat: no-repeat;
+		border-radius:2px;
+		background-position:203px 0px;
+	}
+	.grabble_input input{
+		height:25px;
+		border:0px;
+		outline:none;
+		background-color:inherit;
+		font-size:14px;
+		padding-left:15px;
+		color:#333;
+	}
+	/*设置您的商店，游戏...下拉选框的小箭头*/
+	.merchant_tab,.tab{
+		background-image:url("../img/btn_arrow_down_padded_white.png");
+		background-repeat: no-repeat;
+	}
+	.merchant_tab{
+		background-position:72px 12px;
+	}
+	.tab{
+		background-position:45px 12px;
+	}
+	/*设置下拉背景*/
+	.tab_down{
+		position:absolute;
+		background-color:#C9D6E1;
+		box-shadow: 0px 0px 12px #000;
+		padding:8px 5px;
+	}
+	/*设置下拉a标签颜色*/
+	.tab_down a,.tab_down span{
+		display:inline-block;
+		color:#000;
+		padding:5px 12px;
+		font-size:12px;
+	}
+	.tab_down span{
+		color:#4f94bc;
+	}
+	.tab_down .line{
+		width:100%;
+		padding:0;
+		border-top:1px solid #FFF;
+		float:left;
+		margin:5px 0px;
+	}
+	.tab_down a:hover{
+		background-color:#212d3d;
+		color:#fff;
+	}
+	.merchant_tabDown a{
+		width:104px;
+	}
+	.game_tabDown a{
+		width:133px;
+	}
+	.software_tabDown a,.hardware_tabDown a{
+		width:115px;
+	}
+	.video_tabDown a{
+		width:96px;
+	}
+	.merchant_tabDown,.game_tabDown,.software_tabDown,.hardware_tabDown,.video_tabDown{
+		display:none;
+	}
+	.merchant_tabFa:hover .merchant_tabDown{
+		display:block;
+	}
+	.game_tabFa:hover .game_tabDown{
+		display:block;
+	}
+	.software_tabFa:hover .software_tabDown{
+		display:block;
+	}
+	.hardware_tabFa:hover .hardware_tabDown{
+		display:block;
+	}
+	.video_tabFa:hover .video_tabDown{
+		display:block;
+	}
+	
+	/*卡片a标签颜色总体样式*/
+	.steamcards a{
+		font-size:13px;
+		display:block;
+		color:#66c0f4;
+		margin:7px 0px;
+	}
+	/*设置卡片侧边栏****/
+	.steamcards{
+		float:left;
+		width:210px;
+		color:#c6d4df;
+	}
+	.steamcard{
+		width:210px;
+	}
+	.card_tab{
+		margin-top:5px;
+	}
+	.cardtext{
+		font-size:12px;
+		display:block;
+		margin:15px 0px 7px 0px;
+	}
+	.steamcards a:hover{
+		color:#fff;
+	}
