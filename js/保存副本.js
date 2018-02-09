@@ -192,3 +192,86 @@ spanlist.click(function(){
 	m = nowpicture;
 	bannerbg.eq(m).fadeIn()
 })
+
+
+
+
+
+
+
+
+
+
+
+/***********************************************************************************/
+//弹出层
+//找到父级元素
+var bannerbg = $(".bannerFa");
+var bannerFa = $(".banFaShow");
+var intro = $(".banFaShow .intro");
+bannerbg.mouseenter(function(){
+	console.log(1)
+	imgList = $(".banFaShow .Img img")
+	newintro = $(".banFaShow .intro");
+	newintro.fadeIn();
+	//弹出框图片自动播放
+	first = setInterval(function(){
+		Outoplay()
+	},1000)
+	newintro.mouseenter(function(){
+		newintro.fadeOut()
+	})
+});
+bannerbg.mouseleave(function(){
+	newintro.fadeOut();
+	clearInterval(first)
+});
+intro.mouseenter(function(){
+	intro.fadeOut()
+})
+
+
+
+var m = 0;
+//banner弹出层自动切换图片
+function Outoplay(){
+	for(var i = 0;i<imgList.length;i++){
+		imgList[i].className = "";
+	}
+	if(m<imgList.length-1){
+		m++;
+	}else{
+		m = 0;
+	}
+	imgList[m].className = "show"
+}
+
+//添加非法属性
+function feifa(){
+	for(var i = 0;i<litterImg.length;i++){
+		litterImg[i].setAttribute("index",i)
+	}
+	for(var j = 0;j<bigImg.length;j++){
+		bigImg[j].setAttribute("order",j)
+	}
+}
+
+//移上小图片切换大图片
+bannerbg.mouseenter(function(){
+	//移上显示相同图片
+	//每次移上都重新获取图片
+ 	litterImg = $(".banFaShow .banner1Img");
+	bigImg = $(".banFaShow .bannerSon_left a img");
+
+	//在执行移动到小图片上改变大图片
+	litterImg.mouseenter(function(){
+		var _thisFa = $(this).closest(".banFaShow").hasClass("banFaShow");
+		if(_thisFa){
+			feifa();
+			$(bigImg).removeClass("bannerSon_show")
+			var thisIndex = this.getAttribute("index");
+			var thisOrder = bigImg[thisIndex];
+			$(thisOrder).addClass("bannerSon_show");
+		}
+	})	
+})
