@@ -1,3 +1,11 @@
+//禁止a链接刷新
+var Alist = $("a");
+Alist.attr({
+	href: "javascript:void(0)"
+});
+
+
+
 var bannerbg = $(".bannerFa");
 var bannerFa = $(".banFaShow");
 var a = false;
@@ -9,42 +17,47 @@ var a = false;
 //3.show添加哪一个类名就能让他显示
 //4.穿入小圆点的父级判断更新哪个个小圆点
 function bannerMove(left,right,box,show,cirFa){
-	m = 0;
 	//找到左右按钮
 	var Left = $(left);//左边点击按钮
 	var Right = $(right);//右边点击按钮
 	var moveBox = $(box);//所有的图片盒子集合
+
 
 	//去掉传入类名参数前面的点
 	var newleft = left.slice(1);
 	var newright = right.slice(1);
 	var newshow = show.slice(1);
 	//判断图片位置
+	//给父级元素设置非法属性值
+	for(var i = 0;i<moveBox.length;i++){
+		moveBox.eq(i).attr({"index":i})
+	}
 	//绑定右单击事件
 	Right.click(function(){
-		if(!a){
-			//让许所有的盒子消失
-			moveBox.eq(m).fadeOut()
-			//先清空所有让大盒子显示的类名
-			for(var i = 0;i<moveBox.length;i++){
-				moveBox.eq(i).removeClass(newshow);
-			}
-			//判断当前是否在最后一张
-			if(m<moveBox.length-1){
-				m++;
-			}else{
-				m = 0;
-			}
-			//判断更新哪个小圆点
-			updateCricle(cirFa)
-			//给第n张添加能让它显示的类名
-			moveBox.eq(m).fadeIn()
-			moveBox.eq(m).addClass(newshow);
+		//让m的值等于非法属性防止变量冲突，因为每个轮播图用的都是自己身上定义的非法属性所以不会起冲突
+		m = Number($(show).attr("index"));
+		//让许所有的盒子消失
+		moveBox.eq(m).fadeOut()
+		//先清空所有让大盒子显示的类名
+		for(var i = 0;i<moveBox.length;i++){
+			moveBox.eq(i).removeClass(newshow);
 		}
+		//判断当前是否在最后一张
+		if(m<moveBox.length-1){
+			m++;
+		}else{
+			m = 0;
+		}
+		//判断更新哪个小圆点
+		updateCricle(cirFa)
+		//给第n张添加能让它显示的类名
+		moveBox.eq(m).fadeIn()
+		moveBox.eq(m).addClass(newshow);
 	})
 
 	//绑定左单击事件
 	Left.click(function(){
+		m = Number($(show).attr("index"));
 		//让当前的盒子隐藏
 		moveBox.eq(m).fadeOut();
 		//清空所有让显示的类名
@@ -57,6 +70,7 @@ function bannerMove(left,right,box,show,cirFa){
 		}else{
 			m = moveBox.length-1; //在第一张让他去最后一张
 		}
+		updateCricle(cirFa)
 		//让当前去的图片盒子显示
 		moveBox.eq(m).fadeIn();
 		//加上显示类名
@@ -66,7 +80,7 @@ function bannerMove(left,right,box,show,cirFa){
 bannerMove(".FirLeft",".FirRight",".bannerFa",".banFaShow",".FirstCircle");
 bannerMove(".SecLeft",".SecRight",".location",".yhshow",".SecCircle");
 bannerMove(".ThiLeft",".ThiRight",".guanzhu",".ThibanShow",".ThiCircle");
-
+bannerMove(".FourLeft",".FourRight",".FourthBanner",".FourthShow",".FourCircle")
 //封装弹出层
 //传入参数
 //1.传入banner图类名(最大的盒子)
@@ -190,8 +204,8 @@ function initCircle(father,location){
 }
 initCircle(".bannerFa",".FirstCircle");
 initCircle(".location",".SecCircle");
-initCircle(".guanzhu",".ThiCircle")
-
+initCircle(".guanzhu",".ThiCircle");
+initCircle(".FourthBanner",".FourCircle");
 
 //更新小圆点
 //传入参数
@@ -238,12 +252,32 @@ function circleClick(father,fathershow,circle,circleshow){
 		circlelist.eq(_this).addClass(newcirShow)
 	})
 }
-circleClick(".bannerFa",".banFaShow",".FirstCircle",".yanse")
-circleClick(".location",".yhshow",".SecCircle",".yanse")
-circleClick(".guanzhu",".ThibanShow",".ThiCircle",".yanse")
+circleClick(".bannerFa",".banFaShow",".FirstCircle",".yanse");
+circleClick(".location",".yhshow",".SecCircle",".yanse");
+circleClick(".guanzhu",".ThibanShow",".ThiCircle",".yanse");
+circleClick(".FourthBanner",".FourthShow",".FourCircle",".yanse");
 
 
-
+//*************************未设置成函数方法***************************/
+//商店社区下拉菜单
+var merchant = $(".merchant_fa");
+var merchantSon = $(".merchant");
+var community = $(".community_fa")
+var communitySon = $(".community")
+//商店下拉
+merchant.mouseenter(function(){
+	merchantSon.fadeIn(200)
+})
+merchant.mouseleave(function(){
+	merchantSon.fadeOut(200)
+})
+//社区下拉
+community.mouseenter(function(){
+	communitySon.fadeIn(200)
+})
+community.mouseleave(function(){
+	communitySon.fadeOut(200)
+})
 
 //添加非法属性
 function feifa(){
@@ -274,4 +308,56 @@ bannerbg.mouseenter(function(){
 		}
 	})	
 })
+
+//******tab选项卡******/
+function gametab(){
+	//找到所有的选项卡标题分类
+	var alist = document.getElementsByClassName("fenlei");
+	var gamelist = document.getElementsByClassName("gameList")
+	//给所有分类添加非法属性
+	for(var i = 0;i<alist.length;i++){
+		$(alist).eq(i).attr({"index":i});
+	}
+	//给要炒作的盒子添加非法属性
+	for(var j = 0;j<gamelist.length;j++){
+		$(gamelist).eq(j).attr({"index":j});
+	}
+	//绑定单击事件
+	$(alist).click(function(){
+		//获取当前点击的非法属性
+		var _this = $(this).attr("index");
+		//清空所有操作盒子的类名
+		$(gamelist).removeClass('show');
+		$(alist).removeClass('remen');
+		//让点击的对应盒子显示
+		$(this).addClass('remen');
+		$(gamelist).eq(_this).addClass('show');
+	});
+
+	// 当鼠标移上的时候进行判断
+	$(gamelist).mouseenter(function(){
+		//给含有类名show的盒子里的游戏项目添加非法属性
+		if($(this).hasClass('show')){
+			//找到当前盒子里面的game项目添加非法属性
+			var leftgame = $(this).find('.game1');
+			var rightimg = $(this).find(".gameRight")
+			console.log(rightimg)
+			for(var k = 0;k<leftgame.length;k++){
+				leftgame.eq(k).attr({index:k});
+				rightimg.eq(k).attr({index:k});
+			}
+			leftgame.mouseenter(function(){
+				//输出当前移上的game的非法属性值
+				var gamethis = $(this).attr("index")
+				//清空所有的让右边图片显示的类并显示当前的	
+				rightimg.removeClass('show');
+				rightimg.eq(gamethis).addClass('show')
+			})
+		}
+		//绑定鼠标移上换右边图片事件
+		//每次鼠标移上先判断是否在显示的盒子类操作
+	});
+}
+gametab()
+
 
