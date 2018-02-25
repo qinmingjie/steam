@@ -1974,17 +1974,30 @@
 		padding-top:50px;
 	}
 	.consumer{
-
+		color:#8ba6b6;
+		font-size:12px;
 	}
 	.consumer:after{
 		content:"";
 		display:block;
 		clear:both;
 	}
-	.consumer{
+	.consumer_left{
 		width:585px;
 		padding:10px;
 		float:left;
+	}
+	.consumer img{
+		display:inline-block;
+	}
+	.consumer_p{
+		font-size:15px;
+		color:#FFF;
+	}
+	.consumer_span{
+		font-size:17px;
+		color:#66c0f4;
+		font-weight:bold;
 	}
 
 
