@@ -26,10 +26,15 @@
 		display:block;
 	}
 
+	.lineThrough{
+		text-decoration:line-through;
+	}
+	
 
 	.center{
 		width:1190px;
 		margin:0 auto;
+		padding-left:234px;
 	}
 	.center_son{
 		width:940px;
@@ -150,6 +155,7 @@
 		background-size:100% 100%;
 	}
 	.Fatherbox{
+		/*padding-left:0;*/
 		padding-right:15px;
 		margin-bottom:50px;
 		position:relative;
@@ -160,13 +166,18 @@
 		clear:both;
 	}
 	.grabble{
-		float:right;
+		margin:0 auto;
 		background-color:#377097;
 	}
 	/*************************************/
 
 
 	/*****设置标题ul,li样式**************/
+	.grabble:after{
+		content:"";
+		display:block;
+		clear:both;
+	}
 	.grabble_son>li{
 		float:left;
 		box-shadow:1px 1px 0px rgba();
@@ -318,7 +329,9 @@
 	}
 	/***********************/
 	.steamcards{
-		float:left;
+		position:absolute;
+		left:0;
+		top:0;
 		width:210px;
 		color:#c6d4df;
 	}
@@ -355,7 +368,6 @@
 	.firstBanner{
 		height:380px;
 		/*background-color:pink;*/
-		float:right;
 		margin-top:50px;
 		position:relative;
 	}
@@ -578,7 +590,6 @@
 
 	/*设置小圆点*****/
 	.circle{
-		float:right;
 		text-align:center;
 		margin-top:5px;
 	}
@@ -597,7 +608,6 @@
 
 	/***第二个banner图******/
 	.SecBanner{
-		float:right;
 		height:430px;
 		margin-top:50px;
 		position:relative;
@@ -721,7 +731,6 @@
 
 
 	.liulan{
-		float:right;
 		margin-top:50px;
 	}
 	.liulan_tab{
@@ -748,7 +757,6 @@
 
 	/****第三个banner图******/
 	.ThiBanner{
-		float:right;
 		margin-top:60px;
 		position:relative;
 		min-height:465px;
@@ -876,7 +884,6 @@
 	}
 	.gameTabList{
 		background-color:tomato;
-		float:right;
 		position:relative;
 	}
 	.tabName{
@@ -899,8 +906,7 @@
 		background-color:#2a475e;
 	}
 	.gameList{
-		float:right;
-		margin-top:20px;
+		padding-top:20px;
 		display:none;
 		/*background-color:pink;*/
 	}
@@ -924,9 +930,13 @@
 	/*****设置游戏列表****/
 	.gameText{
 		padding-left:200px;
-		position:relative;
+		/*float:left;*/
+	}
+	.game1>a{
+		/*float:left;*/
 	}
 	.game1{
+		position:relative;
 		background-color:#1F3446;
 		margin-bottom:5px;
 	}
@@ -941,7 +951,7 @@
 	.gamep1{
 		width:80%;
 		color:#c7d5e0;
-		font-size:17px;
+		font-size:1.25em;
 		line-height:18px;
 		padding-top:5px;
 		overflow:hidden;
@@ -973,6 +983,12 @@
 		height:100%;
 		right:0px;
 		top:0;
+	}
+	.gameText_money{
+		width:50px;
+		height:20px;
+		background-color:pink;
+		float:left;
 	}
 
 
@@ -1055,7 +1071,6 @@
 	
 	/****设置第四个banner*****/
 	.diyu{
-		float:right;
 		margin-bottom:10px;
 		margin-top:70px;
 	}
@@ -1074,7 +1089,6 @@
 	}
 	.Four_fa{
 		position:relative;
-		float:right;
 		box-shadow:0px 0px 5px #000;
 		min-height:133px;
 	}
@@ -1226,9 +1240,6 @@
 		display:block;
 		clear:both;
 	}
-	.center_son.zuce_son{
-		float:right;
-	}
 
 	.bottomline{
 		width:100%;
@@ -1275,12 +1286,14 @@
 
 	/**版权信息****/
 	.copyright{
+		padding-left:0;
+	}
+	.copyright{
 		content:"";
 		display:block;
 		clear:both;
 	}
 	.bottomlog{
-		float: right;
 		padding:20px 0px 60px 0px;
 	}
 	.bottomlog div:after{
@@ -1335,6 +1348,19 @@
 
 
 	/**********************游戏详情页***************/
+	.top.gaintro_top{
+		padding-left:0;
+	}
+	.center_son.gintro_bottom{
+		margin:0 auto;
+	}
+	.center_son.gaintro_topson{
+		margin:0 auto;
+	}
+	.Fatherbox.gaintro_father{
+		padding-left:0;
+	}
+
 	.bg.gameintro{
 		padding-bottom:10px;
 	}
@@ -1342,8 +1368,7 @@
 		margin-bottom:0px;
 	}
 	.shequ_fa{
-		float:right;
-		margin-top:30px;
+		margin:20px auto 0px auto;
 	}
 	.shequ_fa:after{
 		content:"";
@@ -1382,7 +1407,7 @@
 		width:600px;
 	}
 	.gameVideo{
-		float:right;
+		margin:15px auto 0 auto;
 		margin-top:15px;
 	}
 	.gameVideo:after{
@@ -1495,7 +1520,7 @@
 		display:inline-block;
 		width:100px;
 	}
-	.pinj_fa .goodP{
+	.goodP{
 		color:#67c1f5;
 	}
 	.good,.all{
@@ -1553,6 +1578,7 @@
 		background-size:cover;
 	}
 	.yuanwang{
+		padding-left:0;
 		padding-right:15px;
 	}
 	.yuanwang:after{
@@ -1561,7 +1587,7 @@
 		clear:both;
 	}
 	.ywtext{
-		float:right;
+		margin:0 auto;
 		height:50px;
 		background: rgba( 0, 0, 0, 0.2 );
 		font-size:12px;
@@ -1578,8 +1604,7 @@
 
 	/***设置抢先体验游戏*****/
 	.allchanpin{
-		float:right;
-		margin-top:30px;
+		margin:30px auto 0px auto;
 	}
 	.allchanpin:after{
 		content:"";
@@ -1587,8 +1612,13 @@
 		clear:both;
 	}
 	.allleft{
+		float:left;
 		width:616px;
 		color:#8f98a0;
+	}
+	.allright{
+		width:308px;
+		float:right;
 	}
 	.allleft h2{
 		background-image:url("../img/maincol_gradient_rule.png");
@@ -1967,28 +1997,38 @@
 		margin-top:20px;
 	}
 	.appraise_fa{
+		padding-left:0;
 		padding-right:15px;
 	}
 	.appraise_son{
-		float:right;
+		margin:0 auto;
 		padding-top:50px;
 	}
 	.consumer{
 		color:#8ba6b6;
 		font-size:12px;
+		box-shadow:0px 0px 5px #000;
+		margin-top:5px;
 	}
 	.consumer:after{
 		content:"";
 		display:block;
 		clear:both;
 	}
+	.consumer_left,.consumer_right{
+		padding:10px;
+		border-bottom:1px solid #000;
+	}
 	.consumer_left{
-		width:585px;
+		width:605px;
 		padding:10px;
 		float:left;
 	}
 	.consumer img{
 		display:inline-block;
+		margin-left:5px;
+		position:relative;
+		top:2px;
 	}
 	.consumer_p{
 		font-size:15px;
@@ -1999,12 +2039,267 @@
 		color:#66c0f4;
 		font-weight:bold;
 	}
+	.consumer_right{
+		width:335px;
+		padding:10px;
+		float:left;
+	}
+
+	/***设置评测下拉*****/
+	.cunsumer_tab{
+		color:#4582a5;
+		background-color:#1f2f42;
+		font-size:12px;
+		position:relative;
+		margin-bottom:30px;
+	}
+	.cunsumer_tab:after{
+		content:"";
+		display:block;
+		clear:both;
+	}
+	.cunsumer_ul{
+		float:left;
+	}
+	.cunsumer_ul>li{
+		float:left;
+		padding-right:10px;
+		border-left:1px solid #2a475e;
+		cursor:pointer;
+		position:relative;
+	}
+	.bgshow,.bgnone{
+		display:inline-block;
+		box-sizing:initial;
+		padding:10px 20px 10px 10px;
+		background-image:url("../img/bluedown.png");
+		background-repeat: no-repeat;
+		background-position:center right;
+	}
+	.bgnone{
+		background-image:none;
+		padding-right:10px;
+	}
+	.cunsumer_ul>li:hover{
+		background-color:#c6d4df;
+	}
+	.cunsumer_ul .hoverbg_none:hover{
+		background-color:inherit;
+		cursor:initial;
+	}
+	.cunsumer_ul>li:hover .bgshow{
+		background-image:url("../img/black.png");
+	}
+	.cunsumer_ul .hoverbg_none:hover .bgshow{
+		background-image:none;
+	}
+	.cunsumer_ul select{
+		width:100px;
+		background-color:#4582a5;
+		font-size:12px;
+		border-radius:2px;
+		border:none;
+	}
+	.bgshow span{
+		color:#000;
+		background-color:#a3cf06;
+		padding:0px 2px;
+		border-radius:2px;
+		margin-left:5px;
+	}
+	.chart{
+		float:right;
+		line-height:20px;
+		cursor:pointer;
+		padding:2px 5px;
+		border-radius:2px;
+		color:#67c1f5;
+		background: rgba( 103, 193, 245, 0.2 );
+	}
+	.chart:hover{
+		background: linear-gradient( -60deg, #417a9b 5%,#67c1f5 95%);
+		color:#fff;
+	}
+	.chart i{
+		display:inline-block;
+		float:right;
+		width:14px;
+		height:16px;
+		background-image:url("../img/review_graph_expander.png");
+		background-repeat: no-repeat;
+		background-position:0px -12px;
+		margin:3px 0px 0px 3px;
+	}
+
+	/***设置测评下拉*****/
+	.bgshow_son{
+		position:absolute;
+		color:#556772;
+		background-color:#c6d4df;
+		font-size:12px;
+		padding:10px;
+		white-space:nowrap;
+		display:none;
+	}
+	.bgshow_son div{
+		position:relative;
+	}
+	.bgshow_son input{
+		position:relative;
+		top:2px;
+	}
+	.bgshow_son li{
+		/*width:100%;*/
+		line-height:20px;
+	}
+	.bgshow_son span{
+		color:#7193a6;
+	}
+	.cunsumer_ul:after{
+		content:"";
+		display:block;
+		clear:both;
+	}
+	.cunsumer_ul>li:hover div{
+		display:block;
+	}
+	.bgshow_text{
+		width:150px;
+		white-space: normal;
+		border-bottom:1px solid #4582a5;
+		margin-bottom:10px;
+		padding-bottom:10px;
+	}
+	.text_chart{
+		display:inline-block;
+		color:#A4D7F5;
+		padding:0px 6px;
+		background: linear-gradient( to bottom, rgba(47,137,188,1) 5%, rgba(23,67,92,1) 95%);
+		line-height:20px;
+		font-size:12px;
+		border-radius:2px;
+	}
+	.text_chart:hover{
+		color:#FFF;
+		background: linear-gradient( to bottom, rgba(102,192,244,1) 5%, rgba(47,137,188,1) 95%);
+	}
+
+	/****设置相匹配条件****/
+	.cunsumer_match{
+		padding-bottom:20px;
+		border-bottom:1px solid #000;
+	}
+	.cunsumer_maText{
+		font-size:15px;
+		color:#c6d4df;
+	}
+	.cunsumer_maText .goodP{
+		font-weight:bold;
+	}
+
+	/***用户评价栏*****/
+	.user_evaluate{
+		margin-top:20px;
+	}
+	.user_evaluate:after{
+		content:"";
+		display:block;
+		clear:both;
+	}
+	.allleft .count{
+		margin-bottom:0;
+		font-size:14px;
+	}
+	.count p{
+		color:#c6d4df;
+	}
+	.count span{
+		color:#56707f;
+	}
+
+	.user_comment{
+		display:flex;
+		justify-content:space-between;
+		background-color: rgba( 0, 0, 0, 0.2 );
+	}
+	.user_commLeft{
+		width:200px;
+		padding:8px;
+	}
+	.user_commRight{
+		width:400px;
+		color:#8091a2;
+	}
+	.user_commLeft:after,.user_commRight:after{
+		content:"";
+		display:block;
+		clear:both;
+	}
+	.userImg{
+		float:left;
+		display:inline-block;
+		padding:1px;
+		margin-right:15px;
+		background: linear-gradient( to bottom, rgba(143,185,59,1) 5%, rgba(110,140,49,1) 95%);
+	}
+	.userImg img{
+		padding:1px;
+	}
+	.user_text a{
+		font-size:12px;
+		color:#c1dbf4;
+	}
+	.user_text a:hover{
+		color:#66c0f4;
+	}
+
+	.suggest{
+		margin:8px 0px 13px 0px;
+		display:block;
+		background: rgba( 0, 0, 0, 0.2 );
+		color:#8091a2;
+	}
+	.suggest:hover{
+		background: rgba( 255, 255, 255, 0.1 );
+	}
+	.thumb{
+		width:100%;
+		font-size:12px;
+	}
+	.thumb:after{
+		content:"";
+		display:block;
+		clear:both;
+	}
+	.thumb img{
+		float:left;
+		margin-right:15px;
+	}
+	.thumb div{
+		line-height:20px;
+	}
+	.thumb_box1{
+		color:#fff;
+		font-size:15px;
+	}
+
+	.forestall{
+		padding:1px 4px 0px 4px;
+		border:1px solid #779abc;
+		cursor:;
+		line-height:13px;
+		font-size:12px;
+		background-color:#4d6c8b;
+		color:#9ac7f3;
+
+	}
+	
 
 
 	/***设置登录页面******/
 	.logIn{
-		float:right;
 		margin-top:20px;
+		margin:20px auto 0 auto;
 		background: url("../img/cluster_bg_2.png");
 		background-repeat: no-repeat;
 		background-position:bottom center;
