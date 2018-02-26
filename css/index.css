@@ -40,6 +40,15 @@
 		width:940px;
 	}
 
+	h2 .newgame{
+		font-size:12px;
+		float:right;
+	}
+
+	.gaintro_bot.center{
+		padding:0;
+	}
+
 	/*顶部logo中全部链接字体颜色****/
 	.top a{
 		display:inline-block;
@@ -156,8 +165,8 @@
 	}
 	.Fatherbox{
 		/*padding-left:0;*/
-		padding-right:15px;
-		margin-bottom:50px;
+/*		padding-right:15px;
+*/		margin-bottom:50px;
 		position:relative;
 	}
 	.Fatherbox:after{
@@ -855,7 +864,7 @@
 		color:#c6d4df;
 		line-height:17px;
 		font-size:12px;
-		padding-right:15px;
+		/*padding-right:15px*/;
 	}
 	.clickRight.ThiLeft,.clickRight.ThiRight{
 		top:40%;
@@ -1153,9 +1162,11 @@
 		display:block;
 		clear:both;
 	}
-	.uopdateRight,.center_son.update{
-		display:block;
+	.updateRight{
+		width:572px;
 		float:right;
+		display:flex;
+		flex-wrap:wrap;
 	}
 	.updateLeft{
 		/*position:relative;*/
@@ -1191,7 +1202,7 @@
 		display:block;
 		width:173px;
 		height:206px;
-		float:left;
+		/*float:right;*/
 		margin:0px 0px 10px 10px;
 		position:relative;
 	}
@@ -1286,7 +1297,7 @@
 
 	/**版权信息****/
 	.copyright{
-		padding-left:0;
+		padding-left:234px;
 	}
 	.copyright{
 		content:"";
@@ -1998,7 +2009,7 @@
 	}
 	.appraise_fa{
 		padding-left:0;
-		padding-right:15px;
+		/*padding-right:15px*/;
 	}
 	.appraise_son{
 		margin:0 auto;
@@ -2206,7 +2217,7 @@
 		display:block;
 		clear:both;
 	}
-	.allleft .count{
+	.allleft .count,.allright .count{
 		margin-bottom:0;
 		font-size:14px;
 	}
@@ -2221,6 +2232,7 @@
 		display:flex;
 		justify-content:space-between;
 		background-color: rgba( 0, 0, 0, 0.2 );
+		margin-bottom:20px;
 	}
 	.user_commLeft{
 		width:200px;
@@ -2245,6 +2257,15 @@
 	.userImg img{
 		padding:1px;
 	}
+	.zezhao{
+		display:block;
+
+		opacity:0.6;
+	}
+	.user_comment:hover .zezhao{
+		cursor:pointer;
+		opacity:1;
+	}
 	.user_text a{
 		font-size:12px;
 		color:#c1dbf4;
@@ -2253,30 +2274,50 @@
 		color:#66c0f4;
 	}
 
-	.suggest{
+	.suggest,.suggest_right{
 		margin:8px 0px 13px 0px;
 		display:block;
 		background: rgba( 0, 0, 0, 0.2 );
 		color:#8091a2;
 	}
-	.suggest:hover{
+	.suggest:hover,.suggest_right:hover{
 		background: rgba( 255, 255, 255, 0.1 );
 	}
-	.thumb{
+	.thumb,.thumb_right{
 		width:100%;
 		font-size:12px;
 	}
-	.thumb:after{
+	.thumb:after,.thumb:after{
 		content:"";
 		display:block;
 		clear:both;
 	}
-	.thumb img{
+	.thumb img,.thumb_right img{
 		float:left;
 		margin-right:15px;
 	}
-	.thumb div{
+	.thumb_right img{
+		width:24px;
+	}
+	.thumb .thumb_logo,.thumb_right .thumb_logo{
+		float:right;
+		margin-right:5px;
+		margin-top:12px;
+		opacity:0.5;
+	}
+	.thumb_right .thumb_logo{
+		width:initial;
+		margin-right:5px;
+		margin-top:4px;
+	}
+	.thumb div,.thumb_right div{
 		line-height:20px;
+	}
+	.thumb_right div{
+		height:24px;
+	}
+	.thumb_right div span{
+		margin-left:30px;
 	}
 	.thumb_box1{
 		color:#fff;
@@ -2284,6 +2325,10 @@
 	}
 
 	.forestall{
+		font-size:12px;
+		margin-bottom:10px;
+	}
+	.forestall span{
 		padding:1px 4px 0px 4px;
 		border:1px solid #779abc;
 		cursor:;
@@ -2291,9 +2336,90 @@
 		font-size:12px;
 		background-color:#4d6c8b;
 		color:#9ac7f3;
-
+		margin-right:15px;
 	}
-	
+	.hand_game,.hand_game1{
+		color:#acb2b8;
+		font-size:13px;
+		padding:0px 0px 17px 0px;
+		border-bottom:1px solid #363f4c;
+		margin-bottom:10px;
+	}
+	.user_commR_son{
+		padding:0px 0px 10px 10px;
+	}
+	.hand_game1{
+		border-bottom:1px solid rgba(0,0,0,0.5);
+	}
+
+	.grade{
+		color:#8091a2;
+		font-size:12px;
+	}
+	.grade a{
+		font-size:13px;
+		color:#66c0f4;
+		padding:0px 6px 0px 6px;
+		background-color:#212c3d;
+		line-height:20px;
+		border-radius:2px;
+		display:inline-block;
+	}
+	.grade i{
+		display:inline-block;
+		width:16px;
+		height:16px;
+		position:relative;
+		top:3px;
+		left:-2px;
+	}
+	.grade_a1 i,.grade_a2 i,.grade_a3 i{
+		background-image:url("../img/icons_16.png");
+	}
+	.grade_a1 i{
+		background-position:-112px -16px;
+	}
+	.grade_a1:hover i{
+		background-position:-144px -16px;
+	}
+	.grade_a2 i{
+		background-position:-64px -16px;
+	}
+	.grade_a2:hover i{
+		background-position:-80px -16px;
+	}
+	.grade_a3 i{
+		background-position:-208px -16px;
+	}
+	.grade_a3:hover i{
+		background-position:-224px -16px;
+	}
+	.grade a:hover{
+		background-color:#66c0f4;
+		color:#fff;
+	}
+	.grade2{
+		line-height:17px;
+		padding:0px 9px 8px 0px;
+		font-size:12px;
+		margin-top:10px;
+	}
+	.grade2_son{
+		float:right;
+	}
+	.grade2_son a{
+		line-height:20px;
+		color:#66c0f4;
+		font-size:12px;
+		padding-right:20px;
+		background-image:url("../img/bluesay.png");
+		background-repeat:no-repeat;
+		background-position:right;
+	}
+	.grade2_son a:hover{
+		color:#FFF;
+		background-image:url("../img/graysay.png")
+	}
 
 
 	/***设置登录页面******/
@@ -2349,6 +2475,9 @@
 		margin-bottom:18px;
 	}
 	.logLeft_son input{
+		padding-left:10px;
+		color:#fff;
+		font-size:17px;
 		width:274px;
 		height:30px;
 		margin:4px 0px;
@@ -2356,6 +2485,59 @@
 		border-radius:2px;
 		background-color:rgba(0,0,0,0.2);
 		box-shadow:1px 1px 0px #45556c;
+	}
+
+
+	/***设置对游戏感兴趣吗？***/
+	.allright{
+		color:#8f98a0;
+	}
+	.interest h2{
+		padding:10px 18px;
+		background: linear-gradient(to right, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.5) 100%);
+	}
+	.interest_text{
+		font-size:14px;
+		padding:16px;
+		margin-bottom:10px;
+		background: linear-gradient(to right, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.5) 100%);
+	}
+	.int_text_p{
+		color:#acb2b8;
+		line-height:20px;
+		margin-bottom:20px;
+	}
+	.int_textSp{
+		margin:0px 2px;
+	}
+
+	/**设置兴趣下tab栏***/
+	.interest_chart_son a{
+		margin-left:35px;
+		line-height:26px;
+		display:block;
+		width:100%;
+		color:#67c1f5;
+		font-size:12px;
+		background: rgba( 103, 193, 245, 0.1 );
+	}
+	.interest_chart_son{
+		position:relative;
+		margin-bottom:2px;
+	}
+	.interest_chart_son i{
+		display:inline-block;
+		position:absolute;	
+		width:30px;
+		height:22px;
+		padding-top:5px;
+		padding-left:6px;
+		background-color:rgba(0,0,0,0.2);
+	}
+	.interest_chart_son i img{
+		width:26px;
+		display:inline-block;
+		float:left;
 	}
 
 

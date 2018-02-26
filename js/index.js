@@ -8,7 +8,6 @@ Alist.attr({
 
 var bannerbg = $(".bannerFa");
 var bannerFa = $(".banFaShow");
-var a = false;
 
 //轮播图函数封装
 //传入产参数
@@ -54,7 +53,6 @@ function bannerMove(left,right,box,show,cirFa){
 		moveBox.eq(m).fadeIn()
 		moveBox.eq(m).addClass(newshow);
 	})
-
 	//绑定左单击事件
 	Left.click(function(){
 		m = Number($(show).attr("index"));
@@ -81,6 +79,65 @@ bannerMove(".FirLeft",".FirRight",".bannerFa",".banFaShow",".FirstCircle");
 bannerMove(".SecLeft",".SecRight",".location",".yhshow",".SecCircle");
 bannerMove(".ThiLeft",".ThiRight",".guanzhu",".ThibanShow",".ThiCircle");
 bannerMove(".FourLeft",".FourRight",".FourthBanner",".FourthShow",".FourCircle")
+
+//智能判断
+function judge(){
+	
+
+	var right_click = $(".FirRight");
+	var left_click = $(".FirLeft");
+	var box = $(".firstBanner");
+	//鼠标移上清除计时器
+	function mouser(hezi){
+		hezi.mouseenter(function(){
+			clearInterval(Bannerauto);
+		});
+	}
+	mouser(box);
+	//鼠标离开开启计时器
+	function leave(hezi){
+		hezi.mouseleave(function(){
+			bannerauto()
+		})
+	}
+	leave(box);
+	
+	//自动播放
+	function bannerauto(){
+		Bannerauto = setInterval(function(){
+			var right = $(".FirRight");
+			var moveBox = $(".bannerFa");
+			//设置非法属性
+			for(var i = 0;i<moveBox.length;i++){
+				moveBox.eq(i).attr({"index":i})
+			}
+			//让m的值等于非法属性防止变量冲突，因为每个轮播图用的都是自己身上定义的非法属性所以不会起冲突
+			m = Number($(".banFaShow").attr("index"));
+			//让许所有的盒子消失
+			moveBox.eq(m).fadeOut()
+			//先清空所有让大盒子显示的类名
+			for(var i = 0;i<moveBox.length;i++){
+				moveBox.eq(i).removeClass("banFaShow");
+			}
+			//判断当前是否在最后一张
+			if(m<moveBox.length-1){
+				m++;
+			}else{
+				m = 0;
+			}
+			//判断更新哪个小圆点
+			updateCricle(".FirstCircle")
+			//给第n张添加能让它显示的类名
+			moveBox.eq(m).fadeIn()
+			moveBox.eq(m).addClass("banFaShow");
+		},1500)
+	}
+	bannerauto()
+
+}
+judge()
+
+
 //封装弹出层
 //传入参数
 //1.传入banner图类名(最大的盒子)
@@ -100,20 +157,19 @@ function popups(father,popups,opin){
 	var newOpin = opin.slice(1);
 
 	Father.mouseenter(function(){
-		if(!a){
-			//占到当前移上的大盒子this
-			var _this = $(this);
-			//判断他是否有让他显示的判断类名
-			var panduan = _this.hasClass(newOpin);
-			//如果存在则让他显示
-			if(panduan == true){
-				popu.fadeIn()
-				a = true;
-			}
+		popu.stop();
+		//占到当前移上的大盒子this
+		var _this = $(this);
+		//判断他是否有让他显示的判断类名
+		var panduan = _this.hasClass(newOpin);
+		//如果存在则让他显示
+		if(panduan == true){
+			popu.fadeIn()
 		}
 	});
 	//鼠标移除隐藏
 	Father.mouseleave(function(){
+		popu.stop();
 		//占到当前移上的大盒子this
 		var _this = $(this);
 		//判断他是否有让他显示的判断类名
@@ -122,7 +178,6 @@ function popups(father,popups,opin){
 		if(panduan == true){
 			popu.fadeOut()
 		}
-		a = false
 	});
 	//移上弹出框弹出框隐藏
 	popu.mouseenter(function(){
