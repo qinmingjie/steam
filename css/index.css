@@ -23,7 +23,7 @@
 		font-size:17px;
 	}
 	img{
-		display:block;
+		vertical-align:middle;
 	}
 
 	.lineThrough{
@@ -1433,26 +1433,54 @@
 		width:100%;
 	}
 
-	.video_img{
+	.video_img_fa{
 		width:100%;
 		overflow:hidden;
-		margin-top:9px;
-		display:flex;
-		justify-content:space-between;
+	}
+
+	.video_img{
+		width:10000px;
+
+	}
+	.video_img:after{
+		content:"";
+		display:block;
+		clear:both;
 	}
 	.video_img img{
-		width:113px;
-		height:65px;
-		margin-right:8px;
+		width:112px;
+		height:62px;
 		cursor:pointer;
+	}
+	.video_img div{
+		float:left;
+		width:116px;
+		height:77px;
+		position:relative;
+		padding-top:13px;
+		padding-left:2px;
+		padding-right:3px;
+		padding-bottom:10px;
+		margin-right:4px;
+	}
+	.whiteSide{
+		background-image:url("../img/whiteside.png");
 	}
 	/***设置滚动条*****/
 	.gundong{
 		position:relative;
-		width:100%;
 		height:18px;
-		background-color:rgba( 0, 0, 0, 0.2 );
 		margin-top:5px;
+	}
+	.gdcenter_fa{
+		height:18px;
+		position:absolute;
+		left:38px;
+		right:38px;
+		top:0;
+		bottom:0;
+		background-color:rgba( 0, 0, 0, 0.2 );
+		border-radius:3px;
 	}
 	.gdleft,.gdright{
 		text-align:center;
@@ -1462,6 +1490,7 @@
 		background-color: rgba( 35, 60, 81, 0.4 );
 		border-radius:2px;
 		cursor:pointer;
+		z-index:5;
 	}
 	.gdleft:hover,.gdright:hover,.gdcenter:hover{
 		background: linear-gradient(135deg, #3d6c8d 0%,#2e5470 100%);
@@ -1495,12 +1524,11 @@
 		background-position:-9px -7px;
 	}
 	.gdcenter{
-		position:absolute;
-		left:135px;
 		width:60px;
 		height:100%;
 		border-radius:2px;
 		background-color: rgba( 35, 60, 81, 0.4 );
+		cursor:pointer;
 	}
 
 
@@ -1590,7 +1618,6 @@
 	}
 	.yuanwang{
 		padding-left:0;
-		padding-right:15px;
 	}
 	.yuanwang:after{
 		content:"";
@@ -2513,24 +2540,30 @@
 
 	/**设置兴趣下tab栏***/
 	.interest_chart_son a{
+		padding-left:4px;
 		margin-left:35px;
 		line-height:26px;
 		display:block;
-		width:100%;
 		color:#67c1f5;
 		font-size:12px;
 		background: rgba( 103, 193, 245, 0.1 );
+		box-sizing:border-box;
+	}
+	.interest_chart_son a:hover{
+		background: linear-gradient(135deg, #67c1f5 0%,#417a9b 100%);
+		color:#fff;
 	}
 	.interest_chart_son{
 		position:relative;
 		margin-bottom:2px;
 	}
 	.interest_chart_son i{
+		box-sizing:initial;
 		display:inline-block;
 		position:absolute;	
 		width:30px;
 		height:22px;
-		padding-top:5px;
+		padding-top:4px;
 		padding-left:6px;
 		background-color:rgba(0,0,0,0.2);
 	}
@@ -2539,6 +2572,111 @@
 		display:inline-block;
 		float:left;
 	}
+
+	/**设置语言栏***/
+	.language_fa{
+		font-size:12px;
+	}
+	.language_fa td{
+		padding:3px 0px 3px 0px;
+	}
+	tr{
+		border-bottom:1px solid #000;
+	}
+	.language_th1{
+		width:93px;
+	}
+	.language_th2{
+		width:61px;
+	}
+	.language_td1{
+		text-align:center;
+	}
+	.language_td1 img{
+		display:inline-block;
+	}
+	.language_fa a{
+		color:#66c0f4;
+	}
+	.language_fa a:hover{
+		color:#fff;
+	}
+
+	/***成就***/
+	.chengjiu{
+		font-size:12px;
+	}
+	.chengjiu_list{
+		margin-top:10px;
+	}
+	.chengjiu:after{
+		content:"";
+		display:block;
+		clear:both;
+	}
+	.chengjiu_list a:first-child{
+		margin-left:0px;
+	}
+	.chengjiu_list a{
+		float:left;
+		margin-left:4px;
+	}
+	.chengjiu_all{
+		display:inline-block;
+		width:64px;
+		height:50px;
+		background-color: rgba( 103, 193, 245, 0.2 );
+		color:#67c1f5;
+		padding-top:14px;
+		box-sizing:initial;
+		text-align:center;
+		font-size:13px;
+	}
+	.chengjiu_all:hover{
+		background: linear-gradient(135deg, #67c1f5 0%,#417a9b 100%);
+		color:#FFF;
+	}
+
+	/***游戏发行商****/
+	.gameurl{
+		font-size:12px;
+	}
+	.gameurl_son{
+		margin-top:10px;
+	}
+	.gameurl_son img{
+		position:relative;
+		top:-2px;
+		left:5px;
+	}
+	.gameurl p a{
+		color:#fff;
+	}
+	.gameurl p a:hover{
+		color:#66c0f4;
+	}
+	.gameurl_son a{
+		background: rgba( 103, 193, 245, 0.1 );
+		margin-bottom:2px;
+		color:#66c0f4;
+		font-size:12px;
+		display:block;
+		line-height:17px;
+		padding:4px 0px 4px 8px;
+	}
+	.gameurl_son a:hover{
+		background: linear-gradient(135deg, #67c1f5 0%,#417a9b 100%);
+		color:#fff;
+	}
+	/***分享嵌入***/
+	.interest_text .logBtn i{
+		display:inline-block;
+		width:16px;
+		height:16px;
+		background-image:url("../img/icons_16.png")
+		background-position:;
+	}
+
 
 
 	/***按钮****/

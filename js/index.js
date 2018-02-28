@@ -416,3 +416,108 @@ function gametab(){
 gametab()
 
 
+
+//**********详情页轮播图*****/
+//判断图片所在张数
+var sideLoction = {}
+sideLoction.m = 0;
+sideLoction.n = 0;
+//找到笑小图片的父元素
+var litterImg_fa = $(".video_img")
+//找到所有的要操作的小图片
+var imgLitter = $(".video_img div");
+var gameInfo_left = $(".first_gdLeft");
+var gameInfo_right = $(".first_gdRight")
+gameInfo_right.click(function(){
+	//清空类名
+	imgLitter.removeClass("whiteSide")
+	//获取当前可视区域的最右边位置
+	if((sideLoction.m +1 )%5 == 0 && sideLoction.m != 0){
+		var rightDistance = sideLoction.m + 1;
+	}
+	if(sideLoction.m<imgLitter.length){
+		//判断如果当前所在sideLoction.m的位置是第张的位置那么此时的sideLoction.m的值为4的倍数
+		//让下一个图片的边框出来
+		sideLoction.m++;
+		imgLitter.eq(sideLoction.m).addClass("whiteSide");
+		if(sideLoction.m%5 == 0 && (imgLitter.length-1)-sideLoction.m>=5){
+			litterImg_fa.animate({
+				marginLeft: -(sideLoction.m*120) + "px"
+			})
+		}
+		if((imgLitter.length-1)-rightDistance<5){
+			if(sideLoction!==imgLitter.length-1){
+				//判断还剩几张图片
+				var shengyu = (imgLitter.length-1)-rightDistance;
+				litterImg_fa.animate({
+					marginLeft:-(sideLoction.m+shengyu-4)*120 + "px"
+				})
+			}
+		}
+		if(sideLoction.m==imgLitter.length){
+			litterImg_fa.animate({
+				marginLeft: 0,
+			})
+			sideLoction.m = 0;
+			imgLitter.eq(sideLoction.m).addClass('whiteSide')
+		}
+	}
+})
+
+//滚动条
+function gundong(){
+	var bodybd = $("body")[0]
+	//找到滚动条
+	var gdtiao = $(".firstgd");
+	gdtiao.css({
+		marginLeft: 0
+	})
+	//找到滚动条宽度
+	var gd_width = gdtiao.parent().width();
+	//绑定鼠标点击事件
+	gdtiao.mousedown(function(event){
+		//起始位置的margin
+		var startX = parseInt(gdtiao.css("marginLeft"));
+		var clickX = event.clientX;
+		// 绑定移上事件
+		window.onmousemove = function(event){
+			//移动的位置
+			var moveX = event.clientX;
+			//移动后的margin值
+			var ml = moveX-(clickX - startX);
+			//当刚进入页面时点击后的ml不是当前的margin值所以所以应该先移动在判断
+			gdtiao.css({
+				marginLeft: ml + "px"
+			})
+			if(ml<0){
+				gdtiao.css({
+					marginLeft: 0
+				})
+			}
+			if(ml>gd_width-60){
+				gdtiao.css({
+					marginLeft: gd_width-60 + "px"
+				})
+			}
+			//小条占整个滚动条的百分比
+			var baifen = ml/(gd_width-gdtiao.width())
+			console.log(baifen)
+		}
+		//禁止内容选中
+		bodybd.onselectstart = function(){
+			return false
+		}
+
+		//清空事件
+		window.onmouseup = function(){
+			window.onmousemove = null;
+		}
+		gdtiao.mouseleave(function(){
+			bodybd.onselectstart = function(){
+				return
+			}
+		})
+	}); 
+}
+gundong()
+
