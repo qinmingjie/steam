@@ -426,6 +426,10 @@ sideLoction.n = 0;
 var litterImg_fa = $(".video_img")
 //找到所有的要操作的小图片
 var imgLitter = $(".video_img div");
+//给所有的图片元素添加非法属性
+for(var i = 0;i<imgLitter.length;i++){
+	imgLitter.eq(i).attr({"order": i})
+}
 var gameInfo_left = $(".first_gdLeft");
 var gameInfo_right = $(".first_gdRight")
 gameInfo_right.click(function(){
@@ -439,12 +443,22 @@ gameInfo_right.click(function(){
 		//判断如果当前所在sideLoction.m的位置是第张的位置那么此时的sideLoction.m的值为4的倍数
 		//让下一个图片的边框出来
 		sideLoction.m++;
+		//清空白边类名
 		imgLitter.eq(sideLoction.m).addClass("whiteSide");
+		//如果当前移动到第五个
 		if(sideLoction.m%5 == 0 && (imgLitter.length-1)-sideLoction.m>=5){
 			litterImg_fa.animate({
 				marginLeft: -(sideLoction.m*120) + "px"
+			},function(){
+				//当移动到污的倍数变换的时候，找到当前的margin值所占的百分比然后让滚动条更新
+				var imgFaMargin = Math.abs(parseInt(litterImg_fa[0].style.marginLeft));
+				var imgFa_baifen =  Math.round(imgFaMargin/(imgLitter.length*116)*100)/100;
+				$(".firstgd").animate({
+					marginLeft: imgFa_baifen*($(".firstgd").parent().width() - $(".firstgd").width()) + "px"
+				});
 			})
 		}
+
 		if((imgLitter.length-1)-rightDistance<5){
 			if(sideLoction!==imgLitter.length-1){
 				//判断还剩几张图片
@@ -452,23 +466,132 @@ gameInfo_right.click(function(){
 				litterImg_fa.animate({
 					marginLeft:-(sideLoction.m+shengyu-4)*120 + "px"
 				})
+				$(".firstgd").animate({
+					marginLeft: 1*($(".firstgd").parent().width() - $(".firstgd").width()) + "px"
+				});
 			}
 		}
+
 		if(sideLoction.m==imgLitter.length){
 			litterImg_fa.animate({
 				marginLeft: 0,
 			})
 			sideLoction.m = 0;
-			imgLitter.eq(sideLoction.m).addClass('whiteSide')
+			imgLitter.eq(sideLoction.m).addClass('whiteSide');
+			$(".firstgd").animate({
+				marginLeft: 0 + "px"
+			});
 		}
 	}
 })
+
+
+
+//滚动条左点击事件
+// gameInfo_left.click(function(){
+// 	//清空类名
+// 	imgLitter.removeClass("whiteSide");
+// 	//判断当前图片所在的位置，如果小于则
+// 	if(sideLoction.m<imgLitter.length){
+// 		//判断如果当前所在sideLoction.m的位置是第张的位置那么此时的sideLoction.m的值为4的倍数
+// 		//让下一个图片的边框出来
+
+// 		if(sideLoction.m!==0){
+// 			sideLoction.m--;
+// 			// console.log(sideLoction.m)
+// 			//清空白边类名
+// 			imgLitter.removeClass("whiteSide");
+// 			imgLitter.eq(sideLoction.m).addClass("whiteSide");
+// 			//图片总张数的下标减去图片的位置的余数等与当前图片位置距离图片最后一张的距离
+// 			newLoction = Math.abs((imgLitter.length-1)-(sideLoction.m));
+// 			// 如果当前的图片位置是是第五张则一次移动五张
+// 			// console.log(sideLoction.m)
+// 			if(newLoction == imgLitter.length-5){
+// 				litterImg_fa.animate({
+// 					marginLeft: 0
+// 				});
+// 				gdtiao.animate({
+// 					marginLeft: 0
+// 				})
+// 			}
+// 			//如果总图片的下标减去当前图片的位置等于4则margin值等于当前的位置向前移动一个图片的位置，或则图片为特殊情况的位置减去当前位置等于4则向前移动一个，
+// 			if((imgLitter.length-1)-(sideLoction.m)>=4){
+// 				// if((imgLitter.length-1)-(sideLoction.m) == imgLitter.length-5){
+// 				// 	litterImg_fa.animate({
+// 				// 		marginLeft: 0
+// 				// 	});
+// 				// }
+// 				if(sideLoction.m>=5){
+// 					console.log(parseInt(litterImg_fa.css("marginLeft")))
+// 					console.log(sideLoction.m*120)
+// 					if(parseInt(litterImg_fa.css("marginLeft")) == -(sideLoction.m*120)){
+// 						sideLoction.m = sideLoction.m-1;
+// 					}
+// 					else{
+
+// 					}
+// 				}
+// 				litterImg_fa.animate({
+// 					marginLeft: -(sideLoction.m*120) + "px"
+// 				})
+// 			}
+
+// 		}
+// 	}
+// })
+
+gameInfo_left.click(function(){
+	sideLoction.m--;
+	// 清空所有的白边类名
+	imgLitter.removeClass('whiteSide')
+	//判断当前图片所在的位置
+	//如果不在第五张那么图片始终在白边移动到左侧边缘的时候再次点击向前移动一个
+	// console.log(sideLoction.m)
+	imgLitter.eq(sideLoction.m).addClass('whiteSide')
+	// console.log(parseInt(litterImg_fa.css("marginLeft")))
+	// console.log(-(sideLoction.m+1)*120)
+	if( (parseInt(litterImg_fa.css("marginLeft")) == -(sideLoction.m+1)*120 ) && sideLoction.m!==4){
+		litterImg_fa.animate({
+			marginLeft: -((sideLoction.m)*120) + "px"
+		});
+		imgLitter.eq(sideLoction.m-1).addClass('whiteSide')
+	}
+	if(sideLoction.m == 4){
+		litterImg_fa.animate({
+			marginLeft: 0
+		})
+	}
+	if(sideLoction.m == 0){
+		litterImg_fa.animate({
+			marginLeft: -(imgLitter.length-5)*120 + "px"
+		})
+		sideLoction.m == imgLitter.length-1;
+		imgLitter.eq(sideLoction.m).addClass("whiteSide")
+	}
+})
+
+
+//点图片
+function gameinfoimgclick(){
+	var imglist = $(".video_img div")
+	// 绑定点击事件
+	imglist.click(function(){
+		//清空所有的白边类名,点击的添加类名
+		imglist.removeClass("whiteSide");
+		$(this).addClass("whiteSide");
+		//更新图片位置
+		sideLoction.m = $(this).attr("order")
+	})
+}
+gameinfoimgclick()
+
+
 
 //滚动条
 function gundong(){
 	var bodybd = $("body")[0]
 	//找到滚动条
-	var gdtiao = $(".firstgd");
+	gdtiao = $(".firstgd");
 	gdtiao.css({
 		marginLeft: 0
 	})
@@ -493,15 +616,27 @@ function gundong(){
 				gdtiao.css({
 					marginLeft: 0
 				})
+				ml = 0;
 			}
 			if(ml>gd_width-60){
 				gdtiao.css({
 					marginLeft: gd_width-60 + "px"
 				})
+				ml = gd_width-60;
 			}
+
+
 			//小条占整个滚动条的百分比
-			var baifen = ml/(gd_width-gdtiao.width())
-			console.log(baifen)
+			var baifen = Math.round((ml/(gd_width-gdtiao.width()))*100)/100
+			//让图片的Margin left更正
+			litterImg_fa.css({
+				marginLeft: -baifen*((imgLitter.length-4)*imgLitter.width()) + "px"
+			});
+			if(parseInt(litterImg_fa.css("marginLeft")) < -(imgLitter.length-5)*(120)){
+				litterImg_fa.css({
+					marginLeft: -(imgLitter.length-5)*120 + "px"
+				})
+			}
 		}
 		//禁止内容选中
 		bodybd.onselectstart = function(){
@@ -521,3 +656,61 @@ function gundong(){
 }
 gundong()
 
+
+
+// 了解更多事件
+//找到了解更多
+var more = $(".kfliaojie")
+more.click(function(){
+	var more_fa = $(".allleft_son")
+	more_fa.addClass('allleft_son_height');
+	more.css({
+		display: "none"
+	})
+})
+
+//找到展开阅读
+var zhankai = $(".zuhe_redio")
+zhankai.click(function(){
+	var zhankai_fa = $(".zuhe_fa")
+	zhankai_fa.css({
+		height: "auto"
+	})
+	zhankai.css({
+		display: "none"
+	});
+})
+
+//系统配置选项卡
+var xitonglist = $(".need_tab a");
+var ullist = $(".need_ul")
+for(var i = 0;i<xitonglist.length;i++){
+	xitonglist.eq(i).attr({
+		index: i
+	})
+}
+xitonglist.click(function(){
+	xitonglist.removeClass('show')
+	var _this = $(this).attr("index");
+	$(this).addClass('show')
+	console.log(_this)
+	ullist.removeClass('show');
+	ullist.eq(_this).addClass('show')
+})
+
+
+
+//登陆点击寻cookie事件
+function loginCookie(){
+	var login = $(".logBtnL .logBtn");
+	login.click(function(){
+		//找到用户名及密码框的value值
+		var name_value = $("#username").val();
+		var pass_value = $("#pass").val();
+		// console.log(name_value,pass_value)
+		if(name_value!==""&&pass_value!==""){
+			setCookie({username:name_value,password:pass_value},7)
+		}
+	})
+}
+loginCookie()

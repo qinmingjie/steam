@@ -585,9 +585,9 @@
 					<div class="need">
 						<h2>系统需求</h2>
 						<div class="need_tab">
-							<a class="need_a" href="">Windows</a>
-							<a href="">Mac OS X</a>
-							<a href="">SteamOs + Linux</a>
+							<a class="windows" class="need_a" href="">Windows</a>
+							<a class="mac" href="">Mac OS X</a>
+							<a class="steam" href="">SteamOs + Linux</a>
 						</div>
 						<ul class="need_ul show">
 							<li><p class="ag_color">最低配置:</p></li>
@@ -836,23 +836,47 @@
 								<li>
 									<span class="bgshow">评测结果</span>
 									<div class="bgshow_son">
-										<div><input type="radio" name="cunsumer">&nbsp;全部&nbsp;<span>(7500)</span></div>
-										<div><input type="radio" name="cunsumer">&nbsp;好评&nbsp;<span>(2000)</span></div>
-										<div><input type="radio" name="cunsumer">&nbsp;差评&nbsp;<span>(5500)</span></div>
+										<div>
+											<input type="radio" name="good" id="goodson1">
+											<label for="goodson1">&nbsp;全部&nbsp;<span>(7500)</span></label>
+										</div>
+										<div>
+											<input type="radio" name="good" id="goodson2">
+											<label for="goodson2"> &nbsp;好评&nbsp;<span>(2000)</span></label>
+										</div>
+										<div>
+											<input type="radio" name="good" checked="checked" id="goodson3">
+											<label for="goodson3">&nbsp;差评&nbsp;<span>(5500)</span></label>
+										</div>
 									</div>
 								</li>
 								<li>
 									<span class="bgshow">购得方式</span>
 									<div class="bgshow_son">
-										<div><input type="radio" name="cunsumer">&nbsp;全部&nbsp;<span>(7500)</span></div>
-										<div><input type="radio" name="cunsumer">&nbsp;Steam 购买&nbsp;<span>(2000)</span></div>
-										<div><input type="radio" name="cunsumer">&nbsp;差评&nbsp;<span>(5500)</span></div>
+										<div>
+											<input type="radio" name="cha" id="cha1">
+											<label for="cha1">&nbsp;全部&nbsp;<span>(7500)</span></label>
+										</div>
+										<div>
+											<input type="radio" name="cha" id="cha2">
+											<label for="cha2">&nbsp;Steam 购买&nbsp;<span>(2000)</span></label>
+										</div>
+										<div>
+											<input type="radio" name="cha"  checked="checked" id="cha3">
+											<label for="cha3">&nbsp;差评&nbsp;<span>(5500)</span></label>
+										</div>
 									</div>
 								<li>
 									<span class="bgshow">语言</span>
 									<div class="bgshow_son">
-										<div><input type="radio" name="cunsumer">&nbsp;全部语言&nbsp;<span>(7500)</span></div>
-										<div><input type="radio" name="cunsumer">&nbsp;您的语言&nbsp;<span>(2000)</span></div>
+										<div>
+											<input type="radio" name="all" id="all1">
+											<label for="all1">&nbsp;全部语言&nbsp;<span>(7500)</span></label>
+										</div>
+										<div>
+											<input type="radio" name="all" checked="checked" id="all2">
+											<label for="all2">&nbsp;您的语言&nbsp;<span>(2000)</span></label>
+										</div>
 									</div>
 								</li>
 								<li>
@@ -864,9 +888,18 @@
 											<br>
 											<a class="text_chart" href="">显示图表</a>
 										</div>
-										<div><input type="radio" name="cunsumer">&nbsp;全部&nbsp;</div>
-										<div><input type="radio" name="cunsumer">&nbsp;仅限特定范围（在上述图表中选择）&nbsp;</div>
-										<div><input type="radio" name="cunsumer">&nbsp;仅限特定范围（在上述图表中选择）&nbsp;</div>
+										<div>
+											<input type="radio" name="cunsumer" checked="checked" id="cnsumer1">
+											<label for="cunsumer1">&nbsp;全部&nbsp;</label>
+										</div>
+										<div>
+											<input type="radio" name="cunsumer" id="cunsumer2">
+											<label for="cunsumer2">&nbsp;仅限特定范围（在上述图表中选择）&nbsp;</label>
+										</div>
+										<div>
+											<input type="radio" name="cunsumer" id="cunsumer3">
+											<label for="cunsumer3">&nbsp;仅限特定范围（在上述图表中选择）&nbsp;</label>
+										</div>
 									</div>
 								</li>
 								<li class="hoverbg_none">
