@@ -257,7 +257,7 @@ function initCircle(father,location){
 	// 让第一个校园点默认显示
 	Loca.find("span").eq(0).addClass('yanse')
 }
-initCircle(".bannerFa",".FirstCircle");
+// initCircle(".bannerFa",".FirstCircle");
 initCircle(".location",".SecCircle");
 initCircle(".guanzhu",".ThiCircle");
 initCircle(".FourthBanner",".FourCircle");
@@ -662,55 +662,50 @@ gundong()
 //找到了解更多
 var more = $(".kfliaojie")
 more.click(function(){
-	var more_fa = $(".allleft_son")
-	more_fa.addClass('allleft_son_height');
-	more.css({
-		display: "none"
-	})
-})
-
-//找到展开阅读
-var zhankai = $(".zuhe_redio")
-zhankai.click(function(){
-	var zhankai_fa = $(".zuhe_fa")
-	zhankai_fa.css({
-		height: "auto"
-	})
-	zhankai.css({
-		display: "none"
-	});
-})
-
-//系统配置选项卡
-var xitonglist = $(".need_tab a");
-var ullist = $(".need_ul")
-for(var i = 0;i<xitonglist.length;i++){
-	xitonglist.eq(i).attr({
-		index: i
-	})
-}
-xitonglist.click(function(){
-	xitonglist.removeClass('show')
-	var _this = $(this).attr("index");
-	$(this).addClass('show')
-	console.log(_this)
-	ullist.removeClass('show');
-	ullist.eq(_this).addClass('show')
 })
 
 
-
-//登陆点击寻cookie事件
+//七天免登陆
 function loginCookie(){
-	var login = $(".logBtnL .logBtn");
+	//找到登陆点击按钮
+	var login = $(".logBtnL .logBtn")
 	login.click(function(){
-		//找到用户名及密码框的value值
+		//找到input款对应的value值
 		var name_value = $("#username").val();
 		var pass_value = $("#pass").val();
-		// console.log(name_value,pass_value)
-		if(name_value!==""&&pass_value!==""){
+		var check = $("#time")[0].checked;
+		//判断是否点击奇谈免登陆来决定是否建立cookie
+		if(check==true && name_value!=="" && pass_value!==""){
 			setCookie({username:name_value,password:pass_value},7)
 		}
-	})
+		//如果没有点击免登陆则清除cookie
+		if(check==false){
+			removeCookie(["username","password"])
+		}
+		//如果信息未填完则不建立cookie
+		if(name_value=="" || pass_value==""){
+			removeCookie(["username","password"])
+			alert("请填写完相关信息")
+		}
+	});
+	//当页面加载完成后执行代码段
+	window.onload = function(){
+		//寻找到指定名的cookie
+		var usercookie = getcookie("username");
+		var passcookie = getcookie("password");
+		//判断是否存在，如果存在则将cookie值写入input的value中
+		if(usercookie!=="" && passcookie!==""){
+			$("#username").val(usercookie);
+			$("#pass").val(passcookie);
+		}
+		//如果不存在则将input框的value值清空
+		else{
+			$("#username").val("");
+			$("#pass").val("");
+		}
+	}
 }
 loginCookie()
+
+
+
