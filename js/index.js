@@ -6,8 +6,7 @@ Alist.attr({
 
 
 
-var bannerbg = $(".bannerFa");
-var bannerFa = $(".banFaShow");
+
 
 //轮播图函数封装
 //传入产参数
@@ -19,7 +18,7 @@ function bannerMove(left,right,box,show,cirFa){
 	//找到左右按钮
 	var Left = $(left);//左边点击按钮
 	var Right = $(right);//右边点击按钮
-	var moveBox = $(box);//所有的图片盒子集合
+	moveBox = $(box);//所有的图片盒子集合
 
 
 	//去掉传入类名参数前面的点
@@ -75,7 +74,7 @@ function bannerMove(left,right,box,show,cirFa){
 		moveBox.eq(m).addClass(newshow)
 	})
 }
-bannerMove(".FirLeft",".FirRight",".bannerFa",".banFaShow",".FirstCircle");
+// bannerMove(".FirLeft",".FirRight",".bannerFa",".banFaShow",".FirstCircle");
 bannerMove(".SecLeft",".SecRight",".location",".yhshow",".SecCircle");
 bannerMove(".ThiLeft",".ThiRight",".guanzhu",".ThibanShow",".ThiCircle");
 bannerMove(".FourLeft",".FourRight",".FourthBanner",".FourthShow",".FourCircle")
@@ -87,6 +86,7 @@ function judge(){
 	var right_click = $(".FirRight");
 	var left_click = $(".FirLeft");
 	var box = $(".firstBanner");
+	var box1 = $(".FirstCircle")
 	//鼠标移上清除计时器
 	function mouser(hezi){
 		hezi.mouseenter(function(){
@@ -94,6 +94,7 @@ function judge(){
 		});
 	}
 	mouser(box);
+	mouser(box1);
 	//鼠标离开开启计时器
 	function leave(hezi){
 		hezi.mouseleave(function(){
@@ -101,7 +102,7 @@ function judge(){
 		})
 	}
 	leave(box);
-	
+	leave(box1);
 	//自动播放
 	function bannerauto(){
 		Bannerauto = setInterval(function(){
@@ -133,7 +134,6 @@ function judge(){
 		},1500)
 	}
 	bannerauto()
-
 }
 judge()
 
@@ -184,7 +184,7 @@ function popups(father,popups,opin){
 		$(this).fadeOut();
 	})
 }
-popups(".bannerFa",".popups",".banFaShow")
+// popups(".bannerFa",".popups",".banFaShow")
 
 
 //弹出层图片自动播放函数封装
@@ -236,7 +236,7 @@ function autoplay(father,imgName,opin,imgshow){
 		clearInterval(imgauto)
 	})
 }
-autoplay(".bannerFa",".Img",".banFaShow",".show")
+// autoplay(".bannerFa",".Img",".banFaShow",".show")
 
 //小圆点的函数
 //自动生成小圆点个数
@@ -307,7 +307,7 @@ function circleClick(father,fathershow,circle,circleshow){
 		circlelist.eq(_this).addClass(newcirShow)
 	})
 }
-circleClick(".bannerFa",".banFaShow",".FirstCircle",".yanse");
+// circleClick(".bannerFa",".banFaShow",".FirstCircle",".yanse");
 circleClick(".location",".yhshow",".SecCircle",".yanse");
 circleClick(".guanzhu",".ThibanShow",".ThiCircle",".yanse");
 circleClick(".FourthBanner",".FourthShow",".FourCircle",".yanse");
@@ -336,33 +336,33 @@ community.mouseleave(function(){
 
 //添加非法属性
 function feifa(){
-	for(var i = 0;i<litterImg.length;i++){
-		litterImg[i].setAttribute("index",i)
+	for(var i = 0;i<showlitterImg.length;i++){
+		showlitterImg[i].setAttribute("index",i)
 	}
-	for(var j = 0;j<bigImg.length;j++){
-		bigImg[j].setAttribute("order",j)
+	for(var j = 0;j<big.length;j++){
+		big[j].setAttribute("order",j)
 	}
 }
 
 //移上小图片切换大图片
-bannerbg.mouseenter(function(){
-	//移上显示相同图片
-	//每次移上都重新获取图片
- 	litterImg = $(".banFaShow .banner1Img");
-	bigImg = $(".banFaShow .bannerSon_left a img");
+// bannerbg.mouseenter(function(){
+// 	//移上显示相同图片
+// 	//每次移上都重新获取图片
+//  	litterImg = $(".banFaShow .banner1Img");
+// 	bigImg = $(".banFaShow .bannerSon_left a img");
 
-	//在执行移动到小图片上改变大图片
-	litterImg.mouseenter(function(){
-		var _thisFa = $(this).closest(".banFaShow").hasClass("banFaShow");
-		if(_thisFa){
-			feifa();
-			$(bigImg).removeClass("bannerSon_show")
-			var thisIndex = this.getAttribute("index");
-			var thisOrder = bigImg[thisIndex];
-			$(thisOrder).addClass("bannerSon_show");
-		}
-	})	
-})
+// 	//在执行移动到小图片上改变大图片
+// 	litterImg.mouseenter(function(){
+// 		var _thisFa = $(this).closest(".banFaShow").hasClass("banFaShow");
+// 		if(_thisFa){
+// 			feifa();
+// 			$(bigImg).removeClass("bannerSon_show")
+// 			var thisIndex = this.getAttribute("index");
+// 			var thisOrder = bigImg[thisIndex];
+// 			$(thisOrder).addClass("bannerSon_show");
+// 		}
+// 	})	
+// })
 
 //******tab选项卡******/
 function gametab(){
