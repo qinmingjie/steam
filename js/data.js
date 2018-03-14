@@ -254,46 +254,70 @@ function callbackfn(data){
 // function zuijinlook(){
 // 	console.log(cookNumber)
 // }
-window.onload = function(){
-	var str = document.cookie
-	//将cookie从分号截取成数组
-	var arrstr = str.split(";")
-	//声明一个数组用来放id个游戏名	
-	var Idarr = [];
-	for(var i = 0;i<arrstr.length;i++){
-		//从分号开始截取得到的数组从等号截取，获得id和游戏名的数组放入一个数组
-		var resultId = arrstr[i].toString().split("=");
-		Idarr.push(resultId)
-	}
 
-	//找到放最近查看的盒子
-	var zuijin = document.getElementsByClassName("chakan")[0];
-	// 生成span插入到最近查看里
-	var span = document.createElement("span");
-	span.setAttribute("class","cardtext");
-	span.innerHTML = "最近查看";
-	zuijin.appendChild(span);
-	// 枚举完成截取后的数组
-	for(var j = 0;j<Idarr.length;j++){
-		//循环多少次则有多少个cookie，第i个数组里的下标为0的是id,1的是游戏名字
-		// console.log(Idarr)
-		var cookgameId = Idarr[j][0];
-		var cookgameName = Idarr[j][1];
-		//每循环一次就生成一个a标签
-		var aElement = document.createElement("a");
-		//a标签的innerHTML是数组中的cookgameId
-		aElement.innerHTML = cookgameName;
-		aElement.setAttribute("href","")
-		zuijin.appendChild(aElement)
-	}
-}
-
+var Idarr = [];
+var Idurl = []
 function callbackfn2(data){
-		console.log(data)
-	for(i in data){
-		fngameId = data[i].gameId;
-		fngameUrl = data[i].url;
+	var date = data
+
+	window.onload = function(){
+
+		var str = document.cookie
+		//将cookie从分号截取成数组
+		var arrstr = str.split(";")
+		//声明一个数组用来放id个游戏名	
+		for(var i = 0;i<arrstr.length;i++){
+			//从分号开始截取得到的数组从等号截取，获得id和游戏名的数组放入一个数组
+			var resultId = arrstr[i].toString().split("=");
+			Idarr.push(resultId)
+		}
+		console.log(Idarr)
+		//如果数组长度不是0则有cookie。执行此代码
+		if(Idarr[0]!==""){
+			//循环数组来找到cookie里的gameId值
+			for(var k = 0;k<Idarr.length;k++){
+				//将id值放入变量
+				var cookgameId = Idarr[k][0];
+				//枚举回掉函数里的id数据和游戏链接地址数据
+				for(var x in date){
+					//后台游戏id数据
+					var dategameId = date[x].gameId
+					//后台游戏地址数据
+					var dategameUrl = date[x].url
+					// 如果后台数据中的id值和枚举cookie中存的值相同则将此时的游戏地址放入数组
+					if(dategameId == cookgameId){
+						Idurl.push(dategameUrl)
+					}
+				}
+			}
+
+
+			//找到放最近查看的盒子
+			var zuijin = document.getElementsByClassName("chakan")[0];
+			// 生成span插入到最近查看里
+			var span = document.createElement("span");
+			span.setAttribute("class","cardtext");
+			span.innerHTML = "最近查看";
+			zuijin.appendChild(span);
+
+			// 枚举完成截取后的数组
+			for(var j = 0;j<Idarr.length;j++){
+				//循环多少次则有多少个cookie，第i个数组里的下标为0的是id,1的是游戏名字
+				// console.log(Idarr)
+				cookgameId = Idarr[j][0];
+				var cookgameName = Idarr[j][1];
+				//每循环一次就生成一个a标签
+				var aElement = document.createElement("a");
+				//a标签的innerHTML是数组中的cookgameId
+				aElement.innerHTML = cookgameName;
+				aElement.setAttribute("href",Idurl[j])
+				zuijin.appendChild(aElement)
+			}
+		}
+		if(Idarr[0]==""){
+			//找到放最近查看的盒子
+			var zuijin = document.getElementsByClassName("chakan")[0].innerHTML = "";
+		}
 	}
-	// fn2_gameurl = data.
 }
 // removeCookie(["710130","477160","466560","593380","493900"])
