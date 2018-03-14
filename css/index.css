@@ -349,6 +349,12 @@
 	.card_tab{
 		margin-top:5px;
 	}
+	.card_tab a{
+		display:block;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
 	.cardtext{
 		font-size:12px;
 		display:block;
@@ -397,14 +403,15 @@
 	}
 	.bannerSon_left{
 		float:left;
-		min-height:353px;
+		min-height:350px;
 		width:616px;
+		overflow:hidden;
 		/*box-shadow:5px 0 10px 1px #000;*/
 	}
 	.bannerSon_left a{
 		display:block;
 		width:100%;
-		min-height:345px;
+		max-height:350px;
 		overflow:hidden;
 	}
 	.bannerSon_left img{
@@ -422,8 +429,10 @@
 	.bannerSon_right{
 		float:right;
 		width:324px;
-		min-height:353px;
+		min-height:350px;
 		background-image:url("../img/background_maincap_2.jpg");
+		background-repeat:no-repeat;
+		background-size:cover;
 	}
 	.bannerSon_text{
 		color:#fff;
@@ -473,9 +482,13 @@
 		width:150px;
 		height:85px;
 		position:absolute;
-		z-index:38;
 		top:0;
-		background-color:rgba(0,0,0,0.4);
+		z-index:3;
+		background-color:#000;
+		opacity:0.5;
+	}
+	.litterimg{
+		display:block;
 	}
 	.cover:hover{
 		opacity:0;

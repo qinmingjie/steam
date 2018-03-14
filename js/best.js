@@ -87,16 +87,16 @@
 	//设置cookie
 	//obj传入传参数为对象
 	//save,cookie保存的时间
-	function setCookie(obj,save){
+	function setCookie(name,value,save){
 		//获取时间
 		var date = new Date();
 		//设置cookie保存时间
 		date.setDate(date.getDate() + save);
 		//循环对象，每次循环就会新建一个cookie
-		for(var i in obj){ 
+		// for(var i in obj){ 
 			//i代表传入对象中的属性名，obj[i]是属性值
-			document.cookie = i + "=" + obj[i] + ";expires=" + date
-		}
+			document.cookie = name + "=" + value + ";expires=" + date
+		// }
 	}
 
 	//删除cookie

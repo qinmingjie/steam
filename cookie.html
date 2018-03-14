@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title></title>
@@ -21,7 +21,7 @@
 			var endstr = str.indexOf(";",start);
 			//判断要截取的数据之后是否还有分号，如果没有返回值为-1，说明当前截取的数据是最后个数据，那么截取的结束位置就是字符串的长度
 			if(endstr == -1){
-				endstr = str.length
+				endstr = str.length;
 			}
 			//截取查询字符起始位置到分号位置的字符
 			var nowstr = str.slice(start,endstr)
